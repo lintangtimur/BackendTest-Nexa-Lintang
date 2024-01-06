@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "898ebfc9-10ce-436a-8eff-9afbfe79bbcc",
+		"name": "Nexa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1165279"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\":\"admin\",\r\n\t\"username\":\"testdata\",\r\n\t\"password\":\"databaru\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/signup",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"username\":\"testlintang\",\r\n\t\"password\":\"datalintang\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/signin",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add karyawan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nama",
+							"value": "asd",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{server}}/api/addKaryawan",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"addKaryawan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get karyawan filter",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/api/karyawan?keyword=lintang&count=1",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"karyawan"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "lintang"
+						},
+						{
+							"key": "count",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/api/karyawan/20240001",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"karyawan",
+						"20240001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ubah status karyawan",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RsaW50YW5nIiwicGFzc3dvcmQiOiIzYzc4OTY0NDRmODAyMzc4OTRjN2Y2OThhNWE3OTU1OThkYmUyM2MyNzdlNTY0MzQ0ODQwOTM5M2Q1NmU1ZDg0NmQyZWQ5NTQzYjI0ZTZiYjQ3NTFhMmM0ZjExNDEzMWYwOWMxNzMwOWRmMmE2OTM2YzYxZmFhNWVkZTg1NGEwNyIsImlhdCI6MTcwNDUyMjA4MiwiZXhwIjoxNzA0NjA4NDgyfQ._F7_J1Z12m6FIchBV7q48hh9iI5kbFRAof6CxrAki_Q",
+			"type": "string"
+		}
+	]
+}

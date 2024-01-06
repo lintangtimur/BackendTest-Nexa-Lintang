@@ -49,4 +49,4 @@ Disedikan postman collection jika ingin tes via postman, silahkan di import. `ne
 |post|/api/addKaryawan| yes|
 |get|/api/karyawan?keyword&start=0&count=5| yes|
 |put|/api/update_karyawan/:nip| yes|
-|put|/api/update_karyawan/:nip| yes|
+|put|/api/update_status/:nip| yes|

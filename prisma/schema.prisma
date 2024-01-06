@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/client-mysql"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DB_URL")
+}
+
+model admin {
+  id       Int     @id @default(autoincrement())
+  username String @db.VarChar(100) @unique
+  password Bytes?  @db.VarBinary(100)
+  tokens   admin_token[]
+}
+
+
+model admin_token {
+  id         Int       @id @default(autoincrement())
+  id_admin   Int
+  token      String?   @db.Text
+  expired_at DateTime? @db.Timestamp(0)
+
+  admin     admin    @relation(fields: [id_admin], references: [id])
+}
+
+model karyawan {
+  nip       String    @id @db.VarChar(50)
+  nama      String    @db.VarChar(200)
+  alamat    String?   @db.VarChar(200)
+  gend      Gender?
+  photo     String?   @db.Text
+  tgl_lahir DateTime? @db.Date
+  status    Int?      @default(1)
+  insert_at DateTime? @default(now()) @db.Timestamp(0)
+  // insert_by String?
+  // update_by String?
+  update_at DateTime? @db.Timestamp(0)
+  id        Int
+}
+
+model log_trx_api {
+  id        Int       @id @default(autoincrement())
+  user_id   String?   @db.VarChar(100)
+  api       String    @db.VarChar(100)
+  request   String?   @db.Text
+  response  String?   @db.Text
+  insert_at DateTime? @db.Timestamp(0)
+}
+
+model SequelizeMeta {
+  name String @id @unique(map: "name") @db.VarChar(255)
+}
+
+
+
+enum Gender {
+  L
+  P
+}
